@@ -3,16 +3,15 @@ import sys
 import Card
 import NumberSet
 
-class Deck():
+
+class Deck:
     def __init__(self, cardSize, cardCount, numberMax):
-        """Deck constructor"""
-        pass
+        self.__cardCount = int(cardCount)
+        self.__cardSize = int(cardSize)
+        self.__numberMax = numberMax
             
     def getCardCount(self):
-        """Return an integer: the number of cards in this deck"""
-        pass
-
-
+        return self.__cardCount
 
     def getCard(self, n):
         """Return card N from the deck"""

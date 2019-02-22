@@ -16,20 +16,19 @@ class UserInterface():
         while keepGoing:
             command = menu.show()
             if command == "C":
-                pass
+                self.__createDeck()
             elif command == "X":
                 keepGoing = False
 
-
     def __createDeck(self):
         """Command to create a new Deck"""
-        # TODO: Get the user to specify the card size, max number, and number of cards
+        cardSize = int(input("What N dimension of card do you want? "))
+        cardCount = int(input("How many cards do you want in your deck? "))
+        maxNumber = int(input("What should be the max number between {} and {}. "
+                        .format(2 * cardSize * cardSize, 4 * cardSize * cardSize)))
 
-        # TODO: Create a new deck
-
-        # TODO: Display a deck menu and allow use to do things with the deck
-        pass
-
+        self.__deck = Deck.Deck(cardSize, cardCount, maxNumber)
+        self.__deckMenu()
 
     def __deckMenu(self):
         """Present the deck menu to user until a valid selection is chosen"""
