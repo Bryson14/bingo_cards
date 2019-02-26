@@ -1,5 +1,4 @@
 import sys
-
 import Card
 import NumberSet
 
@@ -7,8 +6,11 @@ import NumberSet
 class Deck:
     def __init__(self, cardSize, cardCount, numberMax):
         self.__cardCount = int(cardCount)
-        self.__cardSize = int(cardSize)
-        self.__numberMax = numberMax
+        self.__numset = NumberSet.NumberSet(numberMax)
+        self.__m_cards = []
+        for i in range(len(cardCount)):
+            card = Card.Card(i, cardSize, self.__numset)
+            self.__m_cards.append(card)
             
     def getCardCount(self):
         return self.__cardCount
@@ -17,7 +19,7 @@ class Deck:
         """Return card N from the deck"""
         card = None
         n -= 1
-        if 0 <= n < self.getCardCount():
+        if 0 <= n < self.__cardCount:
             card = self.__m_cards[n]
         return card;
 

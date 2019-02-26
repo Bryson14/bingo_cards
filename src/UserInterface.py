@@ -43,7 +43,6 @@ class UserInterface():
             if command == "P":
                 self.__printCard()
             elif command == "D":
-                print()
                 self.__m_currentDeck.print()
             elif command == "S":
                 self.__saveDeck()

@@ -2,24 +2,24 @@ import random
 
 class NumberSet():
     def __init__(self, size):
-        """NumberSet constructor"""
-        pass
+        self.__size = size
+        self.__number_set = []
+        for i in range(len(self.__size)):
+            self.__number_set.append(i + 1)
+        self.__next_index = 0
 
     def getSize(self):
-        """Return an integer: the size of the NumberSet"""
-        pass
+        return self.__size
 
     def get(self, index):
-        """Return an integer: get the number from this NumberSet at an index"""
-        pass
-
+        return self.__number_set[index]
 
     def randomize(self):
-        """void function: Shuffle this NumberSet"""
-        pass
-
+        random.shuffle(self.__number_set)
 
     def getNext(self):
-        """Return an integer: when called repeatedly return successive values
-        from the NumberSet until the end is reached, at which time 'None' is returned"""
-        pass
+        self.__next_index += 1
+        if self.__next_index < len(self.__number_set):
+            return self.__number_set[self.__next_index]
+        else:
+            return None
