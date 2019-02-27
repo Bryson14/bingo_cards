@@ -4,7 +4,7 @@ class NumberSet():
     def __init__(self, size):
         self.__size = size
         self.__number_set = []
-        for i in range(len(self.__size)):
+        for i in range(self.__size):
             self.__number_set.append(i + 1)
         self.__next_index = 0
 

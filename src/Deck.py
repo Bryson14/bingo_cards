@@ -6,10 +6,10 @@ import NumberSet
 class Deck:
     def __init__(self, cardSize, cardCount, numberMax):
         self.__cardCount = int(cardCount)
-        self.__numset = NumberSet.NumberSet(numberMax)
         self.__m_cards = []
-        for i in range(len(cardCount)):
-            card = Card.Card(i, cardSize, self.__numset)
+        self.__number_set = NumberSet.NumberSet(numberMax)
+        for i in range(self.__cardCount):
+            card = Card.Card(i, cardSize, numberMax)
             self.__m_cards.append(card)
             
     def getCardCount(self):
