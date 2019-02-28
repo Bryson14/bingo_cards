@@ -18,8 +18,10 @@ class NumberSet():
         random.shuffle(self.__number_set)
 
     def getNext(self):
-        self.__next_index += 1
         if self.__next_index < len(self.__number_set):
-            return self.__number_set[self.__next_index]
+            num = self.__number_set[self.__next_index]
+            self.__next_index += 1
+            return num
         else:
+            self.__next_index += 1
             return None

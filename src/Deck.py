@@ -1,28 +1,25 @@
 import sys
 import Card
-import NumberSet
 
 
 class Deck:
     def __init__(self, cardSize, cardCount, numberMax):
-        self.__cardCount = int(cardCount)
+        self.__m_cardCount = int(cardCount)
         self.__m_cards = []
-        self.__number_set = NumberSet.NumberSet(numberMax)
-        for i in range(self.__cardCount):
+        for i in range(self.__m_cardCount):
             card = Card.Card(i, cardSize, numberMax)
             self.__m_cards.append(card)
             
     def getCardCount(self):
-        return self.__cardCount
+        return self.__m_cardCount
 
     def getCard(self, n):
         """Return card N from the deck"""
         card = None
         n -= 1
-        if 0 <= n < self.__cardCount:
+        if 0 <= n < self.__m_cardCount:
             card = self.__m_cards[n]
         return card;
-
 
     def print(self, file=sys.stdout, idx=None):
         """void function: Print cards from the Deck
@@ -34,6 +31,7 @@ class Deck:
             for idx in range(1, self.__m_cardCount + 1):
                 c = self.getCard(idx)
                 c.print(file)
+                print()
             print('', file=file)
         else:
             self.getCard(idx).print(file)

@@ -3,6 +3,7 @@
 import unittest
 import NumberSet
 
+
 class TestNumberSet(unittest.TestCase):
     def setUp(self):
         self.numberSet = NumberSet.NumberSet(18)

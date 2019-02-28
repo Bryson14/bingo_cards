@@ -1,10 +1,10 @@
 import Deck
 import Menu
 
+
 class UserInterface():
     def __init__(self):
-        pass
-
+        self.__indx = 0
 
     def run(self):
         """Present the main menu to the user and repeatedly prompt for a valid command"""
@@ -27,15 +27,15 @@ class UserInterface():
         maxNumber = int(input("What should be the max number between {} and {}. "
                         .format(2 * cardSize * cardSize, 4 * cardSize * cardSize)))
 
-        self.__deck = Deck.Deck(cardSize, cardCount, maxNumber)
+        self.__m_currentDeck = Deck.Deck(cardSize, cardCount, maxNumber)
         self.__deckMenu()
 
     def __deckMenu(self):
         """Present the deck menu to user until a valid selection is chosen"""
         menu = Menu.Menu("Deck")
-        menu.addOption("P", "Print a card to the screen");
-        menu.addOption("D", "Display the whole deck to the screen");
-        menu.addOption("S", "Save the whole deck to a file");
+        menu.addOption("P", "Print a card to the screen")
+        menu.addOption("D", "Display the whole deck to the screen")
+        menu.addOption("S", "Save the whole deck to a file")
 
         keepGoing = True
         while keepGoing:
@@ -49,6 +49,14 @@ class UserInterface():
             elif command == "X":
                 keepGoing = False
 
+    def __getNumberInput(self, message, indx, cardCount)->int:
+        if indx < cardCount:
+            print(message)
+            return indx
+
+    def __getStringInput(self, message):
+        fileName = input(message)
+        return fileName
 
     def __printCard(self):
         """Command to print a single card"""
@@ -57,12 +65,10 @@ class UserInterface():
             print()
             self.__m_currentDeck.print(idx=cardToPrint)
 
-
     def __saveDeck(self):
         """Command to save a deck to a file"""
-        fileName = self.__getStringInput("Enter output file name")
+        fileName = self.__getStringInput("Enter output file name: ")
         if fileName != "":
-            # TODO: open a file and pass to currentDeck.print()
             outputStream = open(fileName, 'w')
             self.__m_currentDeck.print(outputStream)
             outputStream.close()
