@@ -1,5 +1,4 @@
 import sys
-import NumberSet
 
 
 class Card:

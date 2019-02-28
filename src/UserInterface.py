@@ -2,9 +2,9 @@ import Deck
 import Menu
 
 
-class UserInterface():
+class UserInterface:
     def __init__(self):
-        self.__indx = 0
+        pass
 
     def run(self):
         """Present the main menu to the user and repeatedly prompt for a valid command"""

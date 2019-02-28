@@ -1,19 +1,18 @@
 import MenuOption
 
-class Menu(): 
+
+class Menu:
     def __init__(self, header):
         """Menu constructor"""
         self.__m_header = header
         self.__m_optionCount = 0
         self.__m_options = []
 
-
     def addOption(self, command, description):
         """Add an option to the menu"""
         if command is not None and command != "":
             self.__m_options.append(MenuOption.MenuOption(command, description))
             self.__m_optionCount += 1
-
 
     def __isValidCommand(self, command):
         """Check that a command is contained in our list of menu options"""
@@ -25,8 +24,7 @@ class Menu():
                 if command == self.getOption(i).getCommand():
                     isValid = True
                     break
-        return isValid;
-
+        return isValid
 
     def getOption(self, optionIndex):
         option = None
@@ -34,14 +32,11 @@ class Menu():
             option = self.__m_options[optionIndex]
         return option
 
-
     def getHeader(self):
         return self.__m_header
 
-
     def getOptionCount(self):
         return self.__m_optionCount
-
 
     def show(self):
         """Display the menu and take a command from the user"""
