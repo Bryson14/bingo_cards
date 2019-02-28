@@ -1,6 +1,7 @@
 import random
 
-class NumberSet():
+
+class NumberSet:
     def __init__(self, size):
         self.__size = size
         self.__number_set = []
@@ -12,7 +13,12 @@ class NumberSet():
         return self.__size
 
     def get(self, index):
-        return self.__number_set[index]
+        if self.__size <= 0:
+            return None
+        elif 0 > index >= self.__size:
+            return None
+        else:
+            return self.__number_set[index]
 
     def randomize(self):
         random.shuffle(self.__number_set)
@@ -23,5 +29,7 @@ class NumberSet():
             self.__next_index += 1
             return num
         else:
-            self.__next_index += 1
             return None
+
+    def reset_index(self):
+        self.__next_index = 0

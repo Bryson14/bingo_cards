@@ -1,5 +1,6 @@
 import sys
 import Card
+from NumberSet import NumberSet
 
 
 class Deck:
@@ -7,7 +8,7 @@ class Deck:
         self.__m_cardCount = int(cardCount)
         self.__m_cards = []
         for i in range(self.__m_cardCount):
-            card = Card.Card(i, cardSize, numberMax)
+            card = Card.Card(i, cardSize, NumberSet(numberMax))
             self.__m_cards.append(card)
             
     def getCardCount(self):
@@ -31,7 +32,7 @@ class Deck:
             for idx in range(1, self.__m_cardCount + 1):
                 c = self.getCard(idx)
                 c.print(file)
-                print()
+                print("\n", file=file)
             print('', file=file)
         else:
             self.getCard(idx).print(file)

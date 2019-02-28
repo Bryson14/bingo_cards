@@ -3,7 +3,7 @@ import NumberSet
 
 
 class Card:
-    def __init__(self, idnum, size, number_max):
+    def __init__(self, idnum, size, num_set):
         if isinstance(idnum, int):
             self.__idnum = idnum
         else:
@@ -13,7 +13,7 @@ class Card:
             self.__size = size
         else:
             print("--Invalid Size Type--")
-        self.__numberSet = NumberSet.NumberSet(number_max)
+        self.__numberSet = num_set
         self.__numberSet.randomize()
 
     def getId(self):
@@ -57,4 +57,4 @@ class Card:
                     self.__print_data(file)
             self.__print_divider(file)
 
-
+        self.__numberSet.reset_index()
