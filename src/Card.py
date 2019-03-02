@@ -34,7 +34,7 @@ class Card:
     def __print_free_row(self, file):
         for i in range(self.__size):
             if self.__size // 2 == i:
-                print("|{:^5}".format("FREE"), end="", file=file)
+                print("|{:^5}".format("FREE!"), end="", file=file)
             else:
                 print("|{:^5}".format(self.__numberSet.getNext()), end="", file=file)
         print("|", file=file)
