@@ -4,7 +4,9 @@ import Menu
 
 class UserInterface:
     def __init__(self):
-        pass
+        self.__cardSize = 0
+        self.__deckSize = 0
+        self.__maxNumber = 0
 
     def run(self):
         """Present the main menu to the user and repeatedly prompt for a valid command"""
@@ -22,10 +24,31 @@ class UserInterface:
 
     def __createDeck(self):
         """Command to create a new Deck"""
-        cardSize = int(input("What N*N dimension of card do you want? "))
-        cardCount = int(input("How many cards do you want in your deck? "))
-        maxNumber = int(input("What should be the max number between {} and {}. "
-                        .format(2 * cardSize * cardSize, 4 * cardSize * cardSize)))
+
+        correctSize = correctCount = correctMax = False
+        while not correctSize:
+            cardSize = int(input("What N*N dimension of card do you want? "))
+            if isinstance(cardSize, int) and 1 < cardSize:
+                correctSize = True
+                self.__cardSize = cardSize
+            else:
+                print("Enter a valid card size greater than 1. ")
+
+        while not correctCount:
+            cardCount = int(input("How many cards do you want in your deck? "))
+            if isinstance(cardCount, int) and 0 < cardCount:
+                correctCount = True
+                self.__deckSize = cardCount
+            else:
+                print("Enter a valid amount of cards greater than 0. ")
+        while not correctMax:
+            maxNumber = int(input("What should be the max number between {} and {}. "
+                            .format(2 * cardSize * cardSize, 4 * cardSize * cardSize)))
+            if 2 * cardSize * cardSize <= maxNumber <= 4 * cardSize * cardSize:
+                self.__maxNumber = maxNumber
+                correctMax = True
+            else:
+                pass
 
         self.__m_currentDeck = Deck.Deck(cardSize, cardCount, maxNumber)
         self.__deckMenu()
@@ -51,7 +74,6 @@ class UserInterface:
 
     def __getNumberInput(self, message, indx, cardCount)->int:
         if indx < cardCount:
-            print(message)
             return indx
 
     def __getStringInput(self, message):
