@@ -36,4 +36,3 @@ class Deck:
             print('', file=file)
         else:
             self.getCard(idx).print(file)
-
